@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
+import java.util.Scanner;
 
 /**
  * Created by Denis on 23.10.2016.
@@ -20,9 +21,13 @@ public class Connect {
         konfigEinlesen();
         try {
             verbindenDB();
+            System.out.println(con.getMetaData().getDatabaseProductName() + " " + con.getMetaData().getDatabaseProductVersion());
+            System.out.println("Enter drücken");
+            String s = new Scanner(System.in
+            ).nextLine();
             disconnect();
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println(e.getSQLState());
         }
     }
 
